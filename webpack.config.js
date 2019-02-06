@@ -1,5 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   entry: "./src/index.jsx",
@@ -45,5 +47,11 @@ module.exports = {
     hotOnly: true,
     historyApiFallback: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', 'index.html'),
+      filename: './index.html'
+    })
+  ]
 };

@@ -52,7 +52,7 @@ const FormPage = () => {
                   />
                 </div>
                 <div className="text-center">
-                  <button className="btn indigo">Register</button>
+                  <button type='button' className="btn indigo">Register</button>
                 </div>
               </form>
             </MDBCol>
