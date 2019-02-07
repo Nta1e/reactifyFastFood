@@ -1,8 +1,8 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import fetchMock from "fetch-mock";
-import signUpAction from './signupActions';
-import actionTypes from './actionTypes'
+import loginAction from '../loginActions';
+import actionTypes from '../actionTypes'
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -13,7 +13,7 @@ describe('test signup action', ()=>{
     });
     it('mock post', ()=>{
         let postData = {};
-        fetchMock.postOnce('https://ntale--v2.herokuapp.com/api/v2/auth/signup', {
+        fetchMock.postOnce('https://ntale--v2.herokuapp.com/api/v2/auth/login', {
             headers: {
                 'content-type': 'application/json'
             },
@@ -21,13 +21,13 @@ describe('test signup action', ()=>{
         });
         const expectedActions = [
             {
-                type: actionTypes.SIGNUP_SUCCESS,
+                type: actionTypes.LOGIN_SUCCESS,
                 payload: undefined
             }
         ];
         const store = mockStore({});
 
-        return store.dispatch(signUpAction(postData)).then(()=>{
+        return store.dispatch(loginAction(postData)).then(()=>{
             expect(store.getActions()).toEqual(expectedActions)
         })
     })
