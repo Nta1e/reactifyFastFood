@@ -22,7 +22,9 @@ describe('test signup action', ()=>{
         const expectedActions = [
             {
                 type: actionTypes.LOGIN_SUCCESS,
-                payload: undefined
+                payload: {
+                    postData: {}
+                }
             }
         ];
         const store = mockStore({});

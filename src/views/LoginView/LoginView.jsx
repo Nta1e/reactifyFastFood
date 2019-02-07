@@ -9,11 +9,19 @@ import loginAction from '../../actions/loginActions'
 export class LoginView extends Component {
     state = {};
     componentWillReceiveProps(nextProps){
-        const {error, success} = nextProps;
+        const {error, data} = nextProps;
         if(error.length > 0){
-            toast.error(error)
-        }else if(success.length >0){
-            toast.success(success)
+            toast.error(error);
+            setTimeout(()=>{
+                window.location.reload();
+            }, 3800)
+        }else if(data.message.length > 0){
+            toast.success(data.message);
+            window.localStorage.setItem('token', data.token)
+            setTimeout(()=>{
+                window.location.href='/'
+            }, 3000)
+
         }
     }
     onChange = (e) => {
@@ -38,12 +46,11 @@ LoginView.propTypes = {
     loginAction: PropTypes.func.isRequired,
     history: PropTypes.func.isRequired,
     error: PropTypes.string.isRequired,
-    success: PropTypes.string.isRequired
 };
 
 export const mapStateToProps = state => ({
     error: state.login.error,
-    success: state.login.success
+    data: state.login.success
 });
 export default connect(
     mapStateToProps,

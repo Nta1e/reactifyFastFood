@@ -22,7 +22,7 @@ const login = data => dispatch =>{
             else{
                 dispatch({
                     type: actionTypes.LOGIN_SUCCESS,
-                    payload: result.message
+                    payload: result
                 });
             }
 

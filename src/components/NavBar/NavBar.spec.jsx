@@ -2,10 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import NavBar from './NavBar'
 
+let activate = jest.fn();
+let logout = jest.fn();
+let toggleCollapse = jest.fn()
 const props = {
-    toggleCollapse: jest.fn(),
-    isOpen: false
-}
+    toggleCollapse,
+    isOpen: false,
+    activate,
+    logout
+};
 
 describe('test navbar component', ()=>{
     let wrapper;
@@ -15,8 +20,10 @@ describe('test navbar component', ()=>{
     it('matches snapShot', ()=>{
         expect(wrapper).toMatchSnapshot()
     })
-    it('test toggle function',()=>{
-        wrapper.instance().toggleCollapse();
-        expect(wrapper.state('isOpen')).toEqual(true)
+    it('test logout',()=>{
+        wrapper.instance().logout;
+        expect(window.localStorage.getItem('token')).toEqual(null)
     })
+
+
 })

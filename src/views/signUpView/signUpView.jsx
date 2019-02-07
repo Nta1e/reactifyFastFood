@@ -12,7 +12,11 @@ export class Signup extends Component {
       const { error, success } = nextProps;
       const {history} = this.props;
       if(error.length > 1){
-          toast.error(error)
+          toast.error(error);
+          setTimeout(()=>{
+              window.location.reload();
+          }, 3800)
+
       }else if(success.length > 1){
           toast.success(success)
           setTimeout(()=>{
