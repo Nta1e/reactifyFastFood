@@ -38,6 +38,9 @@ class NavbarPage extends Component {
             <MDBNavItem>
               <MDBNavLink to="/signup">SignUp</MDBNavLink>
             </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="/login">Login</MDBNavLink>
+            </MDBNavItem>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBNavbar>
