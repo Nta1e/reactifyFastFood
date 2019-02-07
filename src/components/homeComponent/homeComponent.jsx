@@ -1,8 +1,8 @@
 import React from "react";
 import { MDBMask, MDBRow, MDBBtn, MDBView, MDBContainer } from "mdbreact";
-import "./AppPage.scss";
+import "./AppPage.css";
 
-const AppPage = () => {
+const LandingPage = () => {
   return (
     <div id="apppage">
       <MDBView>
@@ -31,4 +31,4 @@ const AppPage = () => {
   );
 };
 
-export default AppPage;
+export default LandingPage;

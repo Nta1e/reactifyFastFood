@@ -7,18 +7,22 @@ import {
   MDBCard,
   MDBCardBody
 } from "mdbreact";
+import PropTypes from 'prop-types'
 
-const FormPage = () => {
+const FormPage = (props) => {
+  const { onChange, onSubmit }= props;
   return (
     <MDBContainer className=" d-flex justify-content-center align-items-center">
       <MDBCard className="col-md-6 mt-4 col-sm-12 ">
         <MDBCardBody>
           <MDBRow>
             <MDBCol md="12">
-              <form>
+              <form onSubmit={onSubmit}>
                 <p className="h5 text-center mb-4">Sign up</p>
                 <div className="grey-text">
                   <MDBInput
+                    onChange={onChange}
+                    name='username'
                     label="Username"
                     icon="user"
                     group
@@ -28,6 +32,8 @@ const FormPage = () => {
                     success="right"
                   />
                   <MDBInput
+                    onChange={onChange}
+                    name="email"
                     label="Email"
                     icon="envelope"
                     group
@@ -37,6 +43,8 @@ const FormPage = () => {
                     success="right"
                   />
                   <MDBInput
+                    onChange={onChange}
+                    name="password"
                     label="Password"
                     icon="lock"
                     group
@@ -44,6 +52,8 @@ const FormPage = () => {
                     validate
                   />
                   <MDBInput
+                    onChange={onChange}
+                    name="confirm_password"
                     label="Confirm password"
                     icon="lock"
                     group
@@ -52,7 +62,7 @@ const FormPage = () => {
                   />
                 </div>
                 <div className="text-center">
-                  <button type='button' className="btn indigo">Register</button>
+                  <button type='submit' className="btn indigo">Register</button>
                 </div>
               </form>
             </MDBCol>
@@ -62,5 +72,9 @@ const FormPage = () => {
     </MDBContainer>
   );
 };
+FormPage.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 
+};
 export default FormPage;
