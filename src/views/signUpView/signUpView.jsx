@@ -10,10 +10,14 @@ export class Signup extends Component {
   };
   componentWillReceiveProps(nextProps){
       const { error, success } = nextProps;
+      const {history} = this.props;
       if(error.length > 1){
           toast.error(error)
       }else if(success.length > 1){
           toast.success(success)
+          setTimeout(()=>{
+              history.push('/login')
+          }, 3800)
       }
 
   }
@@ -36,7 +40,8 @@ export class Signup extends Component {
 Signup.propTypes = {
     error: PropTypes.string.isRequired,
     success: PropTypes.string.isRequired,
-    signUpAction: PropTypes.func.isRequired
+    signUpAction: PropTypes.func.isRequired,
+    history: PropTypes.func.isRequired
 };
 export const mapStateToProps = state => ({
    error: state.signup.error,
